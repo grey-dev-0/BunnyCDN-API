@@ -61,7 +61,7 @@ class BunnyAPI
             }
         } elseif ($method === "PUT") {//PUT request
             curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
-            if ($url_type === 'STORAGE') {
+            if ($url_type === 'STORAGE' || isset($params['file'])) {
                 $params = json_decode(json_encode($params));
                 curl_setopt($curl, CURLOPT_POST, 1);
                 curl_setopt($curl, CURLOPT_UPLOAD, 1);
@@ -86,7 +86,7 @@ class BunnyAPI
             curl_setopt($curl, CURLOPT_HTTPHEADER, array("AccessKey: $this->access_key"));
         } else {//Video stream
             curl_setopt($curl, CURLOPT_URL, self::VIDEO_STREAM_URL . $url);
-            curl_setopt($curl, CURLOPT_HTTPHEADER, array("AccessKey: " . self::STREAM_LIBRARY_ACCESS_KEY, "Content-Type: application/*+json"));
+            curl_setopt($curl, CURLOPT_HTTPHEADER, array("AccessKey: {$this->api_key}", "Content-Type: application/*+json"));
         }
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -96,7 +96,7 @@ class BunnyAPI
         $result = curl_exec($curl);
         $responseCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
-        
+
         if ($responseCode >= 200 && $responseCode < 300) {
             return json_decode($result, true) ?? [];
         } else {

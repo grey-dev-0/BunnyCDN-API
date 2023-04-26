@@ -6,8 +6,8 @@ BunnyCDN) pull, video streaming, DNS and storage zones [API](https://docs.bunny.
 This class whilst having a main focus on storage zone interaction includes pull zone features. Combining API with FTP,
 managing and using BunnyNet storage zones just got easier.
 
-[![Generic badge](https://img.shields.io/badge/version-1.9.2-blue.svg)]()
-[![Generic badge](https://img.shields.io/badge/PHP-8.2-purple.svg)]()
+[![Generic badge](https://img.shields.io/badge/version-1.9.1-blue.svg)]()
+[![Generic badge](https://img.shields.io/badge/PHP-8.1-purple.svg)]()
 
 ## Index
 * [Features](#features)
@@ -18,15 +18,15 @@ managing and using BunnyNet storage zones just got easier.
 * [DNS]()
 * [Misc]()
 
-### 1.9.2 changes
-* Updated project to be PHP version 8.2 as a minimum
+### 1.9.0-patch changes
+* Patched improper video upload API call.
 
 ### TODO
 * Sort (features) and index the readme
 
 ### Requirements
 
-* PHP 8.2
+* PHP 8.1
 
 For Pull zone, billing and statistics API interaction you will need your BunnyNet API key, this is found in your
 dashboard in the My Account section.
